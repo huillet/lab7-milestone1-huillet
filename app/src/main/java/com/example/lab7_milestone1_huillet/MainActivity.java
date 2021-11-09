@@ -1,6 +1,7 @@
 package com.example.lab7_milestone1_huillet;
 
 import static com.example.lab7_milestone1_huillet.App.CHANNEL_1_ID;
+import static com.example.lab7_milestone1_huillet.App.CHANNEL_2_ID;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         editTextMessage = findViewById(R.id.messageText);
     }
 
-    public void sendOnChannel(View view)
+    public void sendOnChannel1(View view)
     {
         String title = editTextTitle.getText().toString();
         String message = editTextMessage.getText().toString();
@@ -41,6 +42,22 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         notificationManager.notify(1, notification);
+    }
+
+    public void sendOnChannel2(View view)
+    {
+        String title = editTextTitle.getText().toString();
+        String message = editTextMessage.getText().toString();
+
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
+                .setSmallIcon(R.drawable.ic_baseline_chat_bubble_24)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_LOW)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+
+        notificationManager.notify(2, notification);
     }
 
 }
